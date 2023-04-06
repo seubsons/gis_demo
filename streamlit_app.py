@@ -41,4 +41,4 @@ markdown = """
 m = leafmap.Map(center=(15.8700, 100.9925), zoom=4, height="400px", width="400px")
 
 #m.add_basemap("OpenTopoMap")
-m.to_streamlit(height=500)
+m.to_streamlit(height=700)
