@@ -38,7 +38,7 @@ markdown = """
 #st.markdown(markdown)
 
 #m = leafmap.Map(minimap_control=True)
-m = leafmap.Map(center=(15.8700, 100.9925), zoom=4, height="200px", width="100px",
+m = leafmap.Map(center=(15.8700, 100.9925), zoom=5, height="200px", width="100px",
                 draw_control=False,
                 measure_control=False,
                 fullscreen_control=True,
