@@ -68,7 +68,10 @@ for city in cities:
     else:
       st.write(f"Error getting coordinates for {city}")
 
-
+show_temp = st.beta_expander(label='Current Temperatures')
+with show_temp:
+  st.table(df)
+  
 # Add the heatmap layer to the map
 m.add_heatmap(
             df,
