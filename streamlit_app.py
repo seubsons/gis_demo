@@ -101,11 +101,19 @@ with show_temp:
     st.table(df[['City', 'Temperature °C']])
   
 # Add the heatmap layer to the map
+#m.add_heatmap(
+#            df,
+#            latitude="Latitude",
+#            longitude="Longitude",
+#            value="Temperature °C",
+#            name="Heat map",
+#            radius=20)
+
 m.add_heatmap(
-            df,
-            latitude="Latitude",
-            longitude="Longitude",
-            value="Temperature °C",
+            df3,
+            latitude="lat",
+            longitude="lng",
+            value="pm2_5",
             name="Heat map",
             radius=20)
 
