@@ -62,7 +62,7 @@ for city in cities:
         temp_celsius = temp_kelvin - 273.15
         
         #st.write(f"Coordinates of {city}: ({lat}, {lon})")
-        st.write(f"Temperature in {city}: {temp_celsius:.1f}°C")
+        #st.write(f"Temperature in {city}: {temp_celsius:.1f}°C")
         
         df = df.append({"Latitude": lat, "Longitude": lon, "Temperature": temp_celsius}, ignore_index=True)
     else:
@@ -70,7 +70,7 @@ for city in cities:
 
 show_temp = st.beta_expander(label='Current Temperatures')
 with show_temp:
-  st.table(df)
+    st.table(df)
   
 # Add the heatmap layer to the map
 m.add_heatmap(
