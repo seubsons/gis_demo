@@ -25,9 +25,9 @@ st.title("World Weather")
 df2 = pd.read_csv('th.csv')
 df2 = df2.dropna()
 
-st.write(df2.head())
-for i in range(3):
-    st.write(df2.loc[i, ['lat']])
+#st.write(df2.head())
+#for i in range(3):
+#    st.write(df2.loc[i, ['lat']])
 
 # st.markdown(
 #     """
@@ -74,11 +74,11 @@ df_air = pd.DataFrame(columns=["City", "Pm2_5"])
 for i in range(len(df2)):
     lat = df2.loc[i,['lat']]
     lon = df2.loc[i,['lon']]
-    d1, d2 = getdata(lat, lon)
-    name = d2['name']
-    pm2_5 = d1['list'][0]['components']['pm2_5']
-    df_air = df_air.append({"City": name, "Pm2_5": pm2_5}, ignore_index=True)
-st.write(df_air.head())
+#    d1, d2 = getdata(lat, lon)
+#    name = d2['name']
+#    pm2_5 = d1['list'][0]['components']['pm2_5']
+#    df_air = df_air.append({"City": name, "Pm2_5": pm2_5}, ignore_index=True)
+#st.write(df_air.head())
     
 for city in cities:    
     # Make the API call and get the response
