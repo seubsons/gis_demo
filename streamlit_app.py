@@ -75,8 +75,8 @@ def getdata(lat, lon):
 #df_air = pd.DataFrame(columns=["City", "Pm2_5"])
 df2 = df2.assign(pm2_5=[0] * len(df2))
 for c in np.arange(len(df2)):
-    pm2_5 = getdata(df2.iloc[c, 'lat'], df2.iloc[c, 'lon'])
-    df2.iloc[c, 'pm2_5'] = pm2_5
+    pm2_5 = getdata(df2.loc[c, 'lat'], df2.loc[c, 'lon'])
+    df2.loc[c, 'pm2_5'] = pm2_5
 #    lat = lat_th[i]
 #    st.write(lat)
 #    lon = df2.loc[i,['lon']]
