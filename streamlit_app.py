@@ -72,9 +72,9 @@ def getdata(lat, lon):
 #st.write(data['list'][0]['components']['pm2_5'])
 #st.write(data2['name'])
 df_air = pd.DataFrame(columns=["City", "Pm2_5"])
-#for i in range(len(df2)):
+for i in range(len(lat_th)):
     #lat = df2.loc[i,['lat']]
-    #st.write(lat)
+    st.write(lat_th[i])
 #    lon = df2.loc[i,['lon']]
 #    d1, d2 = getdata(lat, lon)
 #    name = d2['name']
