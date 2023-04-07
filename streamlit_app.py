@@ -75,7 +75,7 @@ for city in cities:
 #         marker = Marker(location=[lat, lon], draggable=False)
 #         marker.bind_popup(f"{city}: {temp_celsius:.1f}°C")
 #         marker.add_to(m)
-        df = df.append({"Latitude": lat, "Longitude": lon, "Temperature": temp}, ignore_index=True)
+        df = df.append({"Latitude": lat, "Longitude": lon, "Temperature": temp_celsius}, ignore_index=True)
     else:
       st.write(f"Error getting coordinates for {city}")
 
