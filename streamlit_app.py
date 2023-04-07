@@ -70,7 +70,7 @@ for city in cities:
 
 show_temp = st.beta_expander(label='Current Temperatures')
 with show_temp:
-    st.table(df)
+    st.table(df['City', 'Temperature °C'])
   
 # Add the heatmap layer to the map
 m.add_heatmap(
