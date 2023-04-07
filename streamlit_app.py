@@ -109,8 +109,7 @@ with col2:
     m.add_basemap(url_map)
     m.add_layer_control()
     m.set_center(0, 0, 2)
-    st.pydeck_chart(m.to_pydeck())
-    #m.to_streamlit(height=700)
+    m.to_streamlit(height=700)
 #     show_temp = st.beta_expander(label='PM 2.5')
 #     with show_temp:
 #         st.table(df3[['city', 'population', 'pm2_5']])
