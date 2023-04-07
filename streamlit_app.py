@@ -69,11 +69,11 @@ def getdata(lat, lon):
     return pm2_5
 
 
-#df2 = df2.assign(pm2_5=[0] * len(df2))
-#for c in np.arange(len(df2)):
-#    pm2_5 = getdata(df2.loc[c, 'lat'], df2.loc[c, 'lon'])
-#    df2.loc[c, 'pm2_5'] = pm2_5
-#st.write(df2)
+df2 = df2.assign(pm2_5=[0] * len(df2))
+for c in np.arange(len(df2)):
+    pm2_5 = getdata(df2.loc[c, 'lat'], df2.loc[c, 'lng'])
+    df2.loc[c, 'pm2_5'] = pm2_5
+st.write(df2)
     
 for city in cities:    
     # Make the API call and get the response
