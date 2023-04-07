@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import leafmap.foliumap as leafmap
 import pandas as pd
 import requests
