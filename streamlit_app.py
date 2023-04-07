@@ -1,6 +1,5 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
-from leafmap.markers import Marker
 #import leafmap
 import requests
 
@@ -56,6 +55,7 @@ cities = ["New York", "Paris", "Tokyo", "Sydney", "Cape Town", "Rio de Janeiro",
 url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid={}"
 
 # Loop through the cities and get their latitudes and longitudes using OpenWeatherMap API
+dat = []
 for city in cities:    
     # Make the API call and get the response
     response = requests.get(url.format(city, api_key))
@@ -70,11 +70,19 @@ for city in cities:
         st.write(f"Temperature in {city}: {temp_celsius:.1f}°C")
         
         # Create a Leaflet marker for the city and add it to the map with the temperature as a popup
-        marker = Marker(location=[lat, lon], draggable=False)
-        marker.bind_popup(f"{city}: {temp_celsius:.1f}°C")
-        marker.add_to(m)
+#         marker = Marker(location=[lat, lon], draggable=False)
+#         marker.bind_popup(f"{city}: {temp_celsius:.1f}°C")
+#         marker.add_to(m)
+        
+        dat.append([lat, lon, temp_celsius])
     else:
       st.write(f"Error getting coordinates for {city}")
+
+# Create a heatmap layer
+heatmap = leafmap.Heatmap(data=data, name="Temperature", radius=15)
+
+# Add the heatmap layer to the map
+m.add_layer(heatmap)
 
 #m.add_basemap("OpenTopoMap")
 #m.to_streamlit(height=700)
