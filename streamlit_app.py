@@ -25,7 +25,7 @@ st.title("World Weather")
 df2 = pd.read_csv('th.csv')
 df2 = df2.dropna()
 
-#st.write(df2.head())
+st.write(df2.head(10))
 #for i in range(3):
 #    st.write(df2.loc[i, ['lat']])
 
