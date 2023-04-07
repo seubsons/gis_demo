@@ -50,17 +50,23 @@ cities = ["New York", "Paris", "Tokyo", "Sydney", "Cape Town", "Rio de Janeiro",
 
 url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid={}"
 url2 = "http://api.openweathermap.org/data/2.5/air_pollution?lat={}&lon={}&appid={}"
+url3 = "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}
 
 # Loop through the cities and get their latitudes and longitudes using OpenWeatherMap API
 df = pd.DataFrame(columns=["City", "Latitude", "Longitude", "Temperature °C"])
 
-def getair(lat, lon):
+def getdata(lat, lon):
     response = requests.get(url2.format(lat, lon, api_key))
+    response2 = requests.get(url3.format(lat, lon, api_key))
     data = response.json()
-    return data
+    data2 = response2.json()
+    return data, data2
 
-data = getair(14.5, 101.5)
+
+data, data2 = getdata(14.5, 101.5)
+
 st.write(data['list'][0])
+st.write(data2)
 
     
 for city in cities:    
