@@ -1,20 +1,18 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
-#import leafmap.leafmap as leafmap
 import pandas as pd
 import requests
 import numpy as np
 
 api_key = st.secrets["pass"]
 
-
 st.set_page_config(layout="wide")
 
-# Customize the sidebar
-markdown = """
-Web App URL: <https://template.streamlit.app>
-GitHub Repository: <https://github.com/giswqs/streamlit-multipage-template>
-"""
+# # Customize the sidebar
+# markdown = """
+# Web App URL: <https://template.streamlit.app>
+# GitHub Repository: <https://github.com/giswqs/streamlit-multipage-template>
+# """
 
 #st.sidebar.title("About")
 #st.sidebar.info(markdown)
@@ -37,8 +35,8 @@ df3 = df2[0:50]
 
 #st.header("Instructions")
 
-markdown = """
-"""
+# markdown = """
+# """
 
 #st.markdown(markdown)
 
@@ -72,69 +70,32 @@ def getdata(lat, lon):
     return pm2_5
 
 #### Loop over cities
-# df3 = df3.assign(pm2_5=[0] * len(df3))
-# for c in np.arange(len(df3)):
-#     #st.write(c)
-#     pm2_5 = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
-#     df3.loc[c, 'pm2_5'] = pm2_5
-#st.write(df3)
+df3 = df3.assign(pm2_5=[0] * len(df3))
+for c in np.arange(len(df3)):
+    #st.write(c)
+    pm2_5 = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
+    df3.loc[c, 'pm2_5'] = pm2_5
+st.write(df3)
     
-#for city in cities:
-#    # Make the API call and get the response
-#    response = requests.get(url.format(city, api_key))
-#    if response:
-#        data = response.json()
-#        lat = data["coord"]["lat"]
-#        lon = data["coord"]["lon"]
-#        temp_kelvin = data["main"]["temp"]
-#        temp_celsius = temp_kelvin - 273.15
-#
-#        #st.write(f"Coordinates of {city}: ({lat}, {lon})")
-#        #st.write(f"Temperature in {city}: {temp_celsius:.1f}°C")
-#
-#        df = df.append({"City": city, "Latitude": lat, "Longitude": lon, "Temperature °C": temp_celsius}, ignore_index=True)
-#    else:
-#      st.write(f"Error getting coordinates for {city}")
-
 ######################################################################################################################
 # Customize page title
 st.title("Air Quality Map")
 
 col1, col2 = st.columns(2)
-#show_temp = st.beta_expander(label='Current Temperatures')
-#with show_temp:
-#    st.table(df[['City', 'Temperature °C']])
 with col2:
-    layer = "precipitation"
-    #api_key = "YOUR_API_KEY"
-    url_map = "https://tile.openweathermap.org/map/{layer}/{z}/{x}/{y}.png?appid={api_key}"
-    attribution = "Map data &copy; OpenWeatherMap"
-    vector_tile_layer_styles = {}
-    m.add_vector_tile_layer(url_map, attribution, vector_tile_layer_styles)
-    #m.add_tile_layer(url_map, attribution)
-    # Display the map in Streamlit
-    m.to_streamlit()
-#     show_temp = st.beta_expander(label='PM 2.5')
-#     with show_temp:
-#         st.table(df3[['city', 'population', 'pm2_5']])
+    show_temp = st.beta_expander(label='PM 2.5')
+    with show_temp:
+        st.table(df3[['city', 'population', 'pm2_5']])
 
 # Add the heatmap layer to the map
-#m.add_heatmap(
-#            df,
-#            latitude="Latitude",
-#            longitude="Longitude",
-#            value="Temperature °C",
-#            name="Heat map",
-#            radius=20)
-
 with col1:
-#     m.add_heatmap(
-#                 df3,
-#                 latitude="lat",
-#                 longitude="lng",
-#                 value="pm2_5",
-#                 name="PM 2.5",
-#                 radius=25)
+    m.add_heatmap(
+                df3,
+                latitude="lat",
+                longitude="lng",
+                value="pm2_5",
+                name="PM 2.5",
+                radius=25)
 
     m.to_streamlit(height=700)
 
