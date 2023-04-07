@@ -1,0 +1,52 @@
+import streamlit as st
+import requests
+import leafmap
+
+# Set your OpenWeatherMap API key here
+api_key = "YOUR_API_KEY_HERE"
+
+# Define a list of cities to get temperature data for
+cities = ["New York", "Paris", "Tokyo", "Sydney", "Cape Town", "Rio de Janeiro", "Moscow", "Dubai", "Mumbai", "Cairo"]
+
+# Create a Leaflet map
+m = leafmap.Map(center=[0, 0], zoom=2)
+
+# Loop through the cities and get their latitudes and longitudes using OpenWeatherMap API
+for city in cities:
+    # Build the URL for the OpenWeatherMap API call to get the city coordinates
+    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
+
+    # Make the API call and get the response
+    response = requests.get(url)
+
+    # Parse the response and get the city coordinates
+    if response.status_code == 200:
+        data = response.json()
+        lat = data["coord"]["lat"]
+        lon = data["coord"]["lon"]
+        st.write(f"Coordinates of {city}: ({lat}, {lon})")
+
+        # Build the URL for the OpenWeatherMap API call to get the temperature data
+        url = f"http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}"
+
+        # Make the API call and get the response
+        response = requests.get(url)
+
+        # Parse the response and get the temperature data
+        if response.status_code == 200:
+            data = response.json()
+            temp_kelvin = data["main"]["temp"]
+            temp_celsius = temp_kelvin - 273.15
+            st.write(f"Temperature in {city}: {temp_celsius:.1f}°C")
+
+            # Create a Leaflet marker for the city and add it to the map with the temperature as a popup
+            marker = leafmap.Marker(location=[lat, lon], draggable=False)
+            marker.bind_popup(f"{city}: {temp_celsius:.1f}°C")
+            marker.add_to(m)
+        else:
+            st.write(f"Error getting temperature data for {city}: {response.status_code} - {response.text}")
+    else:
+        st.write(f"Error getting coordinates for {city}: {response.status_code} - {response.text}")
+
+# Display the Leaflet map in Streamlit
+st.write(m)
