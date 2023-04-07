@@ -103,7 +103,7 @@ col1, col2 = st.beta_columns(2)
 #show_temp = st.beta_expander(label='Current Temperatures')
 #with show_temp:
 #    st.table(df[['City', 'Temperature °C']])
-with col1:
+with col2:
     show_temp = st.beta_expander(label='PM 2.5')
     with show_temp:
         st.table(df3[['city', 'population', 'pm2_5']])
@@ -117,7 +117,7 @@ with col1:
 #            name="Heat map",
 #            radius=20)
 
-with col2:
+with col1:
     m.add_heatmap(
                 df3,
                 latitude="lat",
