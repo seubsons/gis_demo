@@ -77,7 +77,7 @@ for c in np.arange(len(df3)):
     #st.write(c)
     pm2_5 = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
     df3.loc[c, 'pm2_5'] = pm2_5
-#st.write(df3)
+st.write(df3)
     
 #for city in cities:
 #    # Make the API call and get the response
