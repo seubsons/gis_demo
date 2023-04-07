@@ -71,7 +71,8 @@ def getdata(lat, lon):
 #st.write(data['list'][0]['components']['pm2_5'])
 #st.write(data2['name'])
 df_air = pd.DataFrame(columns=["City", "Pm2_5"])
-#for i in range(len(df2)):
+for i in range(len(df2)):
+     print(i)
 #    lat = df2.loc[i,['lat']]
 #    lon = df2.loc[i,['lon']]
 #    d1, d2 = getdata(lat, lon)
