@@ -117,7 +117,7 @@ m.add_heatmap(
             latitude="lat",
             longitude="lng",
             value="pm2_5",
-            name="Heat map",
+            name="PM 2.5",
             radius=25)
 
 m.to_streamlit(height=700)
