@@ -59,7 +59,7 @@ def getair(lat, lon):
     data = response.json()
     return data
 
-data = getair(0, 0)
+data = getair(14.5, 101.5)
 st.write(data['list'][0])
 
     
