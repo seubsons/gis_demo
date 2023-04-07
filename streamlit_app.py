@@ -60,7 +60,7 @@ def getair(lat, lon):
     return data
 
 data = getair(0, 0)
-st.write(data['list'])
+st.write(data['list'][0])
 
     
 for city in cities:    
