@@ -22,6 +22,8 @@ GitHub Repository: <https://github.com/giswqs/streamlit-multipage-template>
 # Customize page title
 st.title("World Weather")
 
+df2 = pd.read_csv('th.csv')
+st.write(df2.head())
 
 # st.markdown(
 #     """
