@@ -23,7 +23,7 @@ GitHub Repository: <https://github.com/giswqs/streamlit-multipage-template>
 st.title("World Weather")
 
 df2 = pd.read_csv('th.csv')
-st.write(df2.head())
+#st.write(df2.head())
 
 # st.markdown(
 #     """
@@ -49,10 +49,20 @@ m = leafmap.Map(height="200px", width="50px",
 cities = ["New York", "Paris", "Tokyo", "Sydney", "Cape Town", "Rio de Janeiro", "Moscow", "Dubai", "Mumbai", "Cairo", "Bangkok"]
 
 url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid={}"
+url2 = "http://api.openweathermap.org/data/2.5/air_pollution?lat={}&lon={}&appid={}"
 
 # Loop through the cities and get their latitudes and longitudes using OpenWeatherMap API
 df = pd.DataFrame(columns=["City", "Latitude", "Longitude", "Temperature °C"])
 
+def getair(lat, lon):
+    response = requests.get(url2.format(lat, lon, api_key))
+    data = response.json()
+    return data
+
+data = getair(0, 0)
+st.write(data)
+
+    
 for city in cities:    
     # Make the API call and get the response
     response = requests.get(url.format(city, api_key))
