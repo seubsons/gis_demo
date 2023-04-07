@@ -62,10 +62,13 @@ df = pd.DataFrame(columns=["City", "Latitude", "Longitude", "Temperature °C"])
 
 def getdata(lat, lon):
     response = requests.get(url2.format(lat, lon, api_key))
+    if response:
     #response2 = requests.get(url3.format(lat, lon, api_key))
-    data = response.json()
-    pm2_5 = data['list'][0]['components']['pm2_5']
+        data = response.json()
+        pm2_5 = data['list'][0]['components']['pm2_5']
     #data2 = response2.json()
+    else:
+        pm2_5 = 0.0
     return pm2_5
 
 
