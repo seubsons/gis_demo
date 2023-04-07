@@ -1,6 +1,7 @@
 import streamlit as st
-#import leafmap.foliumap as leafmap
-import leafmap
+import leafmap.foliumap as leafmap
+from leafmap.markers import Marker
+#import leafmap
 import requests
 
 api_key = st.secrets["pass"]
@@ -69,7 +70,7 @@ for city in cities:
         st.write(f"Temperature in {city}: {temp_celsius:.1f}°C")
         
         # Create a Leaflet marker for the city and add it to the map with the temperature as a popup
-        marker = leafmap.Marker(location=[lat, lon], draggable=False)
+        marker = Marker(location=[lat, lon], draggable=False)
         marker.bind_popup(f"{city}: {temp_celsius:.1f}°C")
         marker.add_to(m)
     else:
