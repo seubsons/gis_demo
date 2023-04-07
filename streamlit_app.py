@@ -21,12 +21,12 @@ GitHub Repository: <https://github.com/giswqs/streamlit-multipage-template>
 #st.sidebar.image(logo)
 
 # Customize page title
-st.title("World Weather")
+st.title("Air Quality Map")
 
 df2 = pd.read_csv('th.csv')
 #st.write(len(df2))
 df3 = df2[0:50]
-st.write(df3)
+#st.write(df3)
 #for i in range(3):
 #    st.write(df2.loc[i, ['lat']])
 
@@ -45,7 +45,7 @@ markdown = """
 
 #m = leafmap.Map(minimap_control=True)
 #m = leafmap.Map(center=(14.5, 101.5))
-m = leafmap.Map(height="200px", width="50px",
+m = leafmap.Map(center=(14.5, 101.5), height="200px", width="50px",
                 draw_control=False,
                 measure_control=False,
                )
@@ -77,7 +77,7 @@ for c in np.arange(len(df3)):
     #st.write(c)
     pm2_5 = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
     df3.loc[c, 'pm2_5'] = pm2_5
-st.write(df3)
+#st.write(df3)
     
 for city in cities:    
     # Make the API call and get the response
@@ -96,10 +96,13 @@ for city in cities:
     else:
       st.write(f"Error getting coordinates for {city}")
 
+#show_temp = st.beta_expander(label='Current Temperatures')
+#with show_temp:
+#    st.table(df[['City', 'Temperature °C']])
 show_temp = st.beta_expander(label='Current Temperatures')
 with show_temp:
-    st.table(df[['City', 'Temperature °C']])
-  
+    st.table(df3[['city', 'population', 'pm2_5']])
+
 # Add the heatmap layer to the map
 #m.add_heatmap(
 #            df,
@@ -115,7 +118,7 @@ m.add_heatmap(
             longitude="lng",
             value="pm2_5",
             name="Heat map",
-            radius=20)
+            radius=25)
 
 m.to_streamlit(height=700)
 
