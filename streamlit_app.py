@@ -108,7 +108,7 @@ with col2:
     url_map = "https://tile.openweathermap.org/map/{layer}/{6}/{10}/{10}.png?appid={api_key}"
     m.add_basemap(url_map)
     m.add_layer_control()
-    m.set_center(0, 0, 2)
+    #m.set_center(0, 0, 2)
     m.to_streamlit(height=700)
 #     show_temp = st.beta_expander(label='PM 2.5')
 #     with show_temp:
