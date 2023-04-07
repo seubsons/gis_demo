@@ -23,8 +23,9 @@ GitHub Repository: <https://github.com/giswqs/streamlit-multipage-template>
 st.title("World Weather")
 
 df2 = pd.read_csv('th.csv')
+st.write(len(df2))
 df2 = df2.dropna()
-
+st.write(len(df2))
 lat_th = df2['lat']
 st.write(lat_th)
 #for i in range(3):
