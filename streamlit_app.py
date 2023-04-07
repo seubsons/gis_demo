@@ -79,8 +79,6 @@ for city in cities:
     else:
       st.write(f"Error getting coordinates for {city}")
 
-# Create a heatmap layer
-heatmap = leafmap.Heatmap(data=data, name="Temperature", radius=15)
 
 # Add the heatmap layer to the map
 m.add_heatmap(
