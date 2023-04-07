@@ -49,7 +49,7 @@ cities = ["New York", "Paris", "Tokyo", "Sydney", "Cape Town", "Rio de Janeiro",
 url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid={}"
 
 # Loop through the cities and get their latitudes and longitudes using OpenWeatherMap API
-df = pd.DataFrame(columns=["City", "Latitude", "Longitude", "Temperature"])
+df = pd.DataFrame(columns=["City", "Latitude", "Longitude", "Temperature °C"])
 
 for city in cities:    
     # Make the API call and get the response
@@ -64,7 +64,7 @@ for city in cities:
         #st.write(f"Coordinates of {city}: ({lat}, {lon})")
         #st.write(f"Temperature in {city}: {temp_celsius:.1f}°C")
         
-        df = df.append({"City": city, "Latitude": lat, "Longitude": lon, "Temperature": temp_celsius}, ignore_index=True)
+        df = df.append({"City": city, "Latitude": lat, "Longitude": lon, "Temperature °C": temp_celsius}, ignore_index=True)
     else:
       st.write(f"Error getting coordinates for {city}")
 
