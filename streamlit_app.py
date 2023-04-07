@@ -90,8 +90,8 @@ m.add_heatmap(
             radius=20)
 
 #m.add_basemap("OpenTopoMap")
-m.to_streamlit(height=700)
-#st.write(m)
+#m.to_streamlit(height=700)
+st.write(m)
 
 
 
