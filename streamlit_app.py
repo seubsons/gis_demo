@@ -8,7 +8,6 @@ api_key = st.secrets["pass"]
 
 st.set_page_config(layout="wide")
 
-
 df2 = pd.read_csv('th.csv')
 df3 = df2[0:50]
 
@@ -18,8 +17,6 @@ m = leafmap.Map(center=map_center, zoom=6,
                 measure_control=False,
                )
 
-
-url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid={}"
 url2 = "http://api.openweathermap.org/data/2.5/air_pollution?lat={}&lon={}&appid={}"
 
 def getdata(lat, lon):
@@ -37,17 +34,13 @@ for c in np.arange(len(df3)):
     #st.write(c)
     pm2_5 = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
     df3.loc[c, 'pm2_5'] = pm2_5
-st.write(df3)
     
 ######################################################################################################################
-# Customize page title
+# Display Webpage
+
 st.title("Air Quality Map")
 
 col1, col2 = st.columns(2)
-with col2:
-    show_temp = st.beta_expander(label='PM 2.5')
-    with show_temp:
-        st.table(df3[['city', 'population', 'pm2_5']])
 
 # Add the heatmap layer to the map
 with col1:
@@ -61,6 +54,9 @@ with col1:
 
     m.to_streamlit(height=700)
 
-
+with col2:
+    show_temp = st.beta_expander(label='PM 2.5')
+    with show_temp:
+        st.table(df3[['city', 'population', 'pm2_5']])
 
 
