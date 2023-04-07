@@ -108,7 +108,9 @@ with col2:
     #api_key = "YOUR_API_KEY"
     url_map = "https://tile.openweathermap.org/map/{layer}/{z}/{x}/{y}.png?appid={api_key}"
     attribution = "Map data &copy; OpenWeatherMap"
-    m.add_tile_layer(url_map, attribution)
+    vector_tile_layer_styles = {}
+    m.add_vector_tile_layer(url_map, attribution, vector_tile_layer_styles)
+    #m.add_tile_layer(url_map, attribution)
     # Display the map in Streamlit
     m.to_streamlit()
 #     show_temp = st.beta_expander(label='PM 2.5')
