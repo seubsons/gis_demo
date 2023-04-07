@@ -99,7 +99,7 @@ def getdata(lat, lon):
 # Customize page title
 st.title("Air Quality Map")
 
-col1, col2 = st.beta_columns(2)
+col1, col2 = st.columns(2)
 #show_temp = st.beta_expander(label='Current Temperatures')
 #with show_temp:
 #    st.table(df[['City', 'Temperature °C']])
