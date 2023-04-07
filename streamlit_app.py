@@ -72,7 +72,7 @@ def getdata(lat, lon):
 #st.write(data2['name'])
 df_air = pd.DataFrame(columns=["City", "Pm2_5"])
 for i in range(len(df2)):
-     print(i)
+     st.write(i)
 #    lat = df2.loc[i,['lat']]
 #    lon = df2.loc[i,['lon']]
 #    d1, d2 = getdata(lat, lon)
