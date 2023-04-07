@@ -65,11 +65,17 @@ def getdata(lat, lon):
     return data, data2
 
 
-data, data2 = getdata(14.5, 101.5)
-
-st.write(data['list'][0]['components']['pm2_5'])
-st.write(data2['name'])
-
+#data, data2 = getdata(14.5, 101.5)
+#st.write(data['list'][0]['components']['pm2_5'])
+#st.write(data2['name'])
+df_air = pd.DataFrame(columns=["City", "Pm2_5"])
+for i in arange(len(df2)):
+    lat = df2.loc[i,['lat']]
+    lon = df2.loc[i,['lon']]
+    d1, d2 = getdata(lat, lon)
+    name = d2['name']
+    pm2_5 = d1['list'][0]['components']['pm2_5']
+    df_air = df_air.append({"City": name, "Pm2_5": pm2_5}, ignore_index=True)
     
 for city in cities:    
     # Make the API call and get the response
