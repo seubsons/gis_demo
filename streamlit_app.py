@@ -104,16 +104,13 @@ col1, col2 = st.columns(2)
 #with show_temp:
 #    st.table(df[['City', 'Temperature °C']])
 with col2:
-    layer = "precipitation_new"
-    #url_map = "https://tile.openweathermap.org/map/{layer}/6/10/10.png?appid={api_key}"
-    url_map = "https://tile.openweathermap.org/map/{layer}/{z}/{x}/{y}.png?appid={api_key}"
-    #m.add_tile_layer(url=url_map, name="Precipitation")
-    m.add_tile_layer(url=url_map, name="Precipitation", attribution="Map data © OpenWeatherMap")
-    m.add_layer_control()
-    #m.add_basemap(url_map)
-    #m.add_layer_control()
-    #m.set_center(0, 0, 2)
-    m.to_streamlit(height=700)
+    layer = "precipitation"
+    #api_key = "YOUR_API_KEY"
+    url_map = f"https://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}"
+    attribution = "Map data &copy; OpenWeatherMap"
+    m.add_tile_layer(url_map, attribution)
+    # Display the map in Streamlit
+    st.pydeck_chart(m.to_streamlit())
 #     show_temp = st.beta_expander(label='PM 2.5')
 #     with show_temp:
 #         st.table(df3[['city', 'population', 'pm2_5']])
