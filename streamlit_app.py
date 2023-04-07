@@ -2,6 +2,7 @@ import streamlit as st
 import leafmap.foliumap as leafmap
 import pandas as pd
 import requests
+import numpy as np
 
 api_key = st.secrets["pass"]
 
@@ -54,24 +55,28 @@ cities = ["New York", "Paris", "Tokyo", "Sydney", "Cape Town", "Rio de Janeiro",
 
 url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid={}"
 url2 = "http://api.openweathermap.org/data/2.5/air_pollution?lat={}&lon={}&appid={}"
-url3 = "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}"
+#url3 = "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}"
 
 # Loop through the cities and get their latitudes and longitudes using OpenWeatherMap API
 df = pd.DataFrame(columns=["City", "Latitude", "Longitude", "Temperature °C"])
 
 def getdata(lat, lon):
     response = requests.get(url2.format(lat, lon, api_key))
-    response2 = requests.get(url3.format(lat, lon, api_key))
+    #response2 = requests.get(url3.format(lat, lon, api_key))
     data = response.json()
-    data2 = response2.json()
-    return data, data2
+    pm2_5 = data['list'][0]['components']['pm2_5']
+    #data2 = response2.json()
+    return pm2_5
 
 
 #data, data2 = getdata(14.5, 101.5)
 #st.write(data['list'][0]['components']['pm2_5'])
 #st.write(data2['name'])
-df_air = pd.DataFrame(columns=["City", "Pm2_5"])
-#for i in range(len(lat_th)):
+#df_air = pd.DataFrame(columns=["City", "Pm2_5"])
+df2 = df2.assign(pm2_5=[0] * len(df2))
+for c in np.arange(len(df2)):
+    pm2_5 = getdata(df2.iloc[c, 'lat'], df2.iloc[c, 'lon'])
+    df2.iloc[c, 'pm2_5'] = pm2_5
 #    lat = lat_th[i]
 #    st.write(lat)
 #    lon = df2.loc[i,['lon']]
@@ -79,7 +84,7 @@ df_air = pd.DataFrame(columns=["City", "Pm2_5"])
 #    name = d2['name']
 #    pm2_5 = d1['list'][0]['components']['pm2_5']
 #    df_air = df_air.append({"City": name, "Pm2_5": pm2_5}, ignore_index=True)
-st.write(df2.iloc[8, :])
+st.write(df2)
     
 for city in cities:    
     # Make the API call and get the response
