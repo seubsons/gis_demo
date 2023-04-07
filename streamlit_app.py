@@ -23,9 +23,10 @@ GitHub Repository: <https://github.com/giswqs/streamlit-multipage-template>
 st.title("World Weather")
 
 df2 = pd.read_csv('th.csv')
-df2 = df2.dropna().copy()
+df2 = df2.dropna()
 
-st.write(df2.head(10))
+lat_th = df2['lat']
+st.write(lat_th)
 #for i in range(3):
 #    st.write(df2.loc[i, ['lat']])
 
@@ -71,9 +72,9 @@ def getdata(lat, lon):
 #st.write(data['list'][0]['components']['pm2_5'])
 #st.write(data2['name'])
 df_air = pd.DataFrame(columns=["City", "Pm2_5"])
-for i in range(len(df2)):
-    lat = df2.loc[i,['lat']]
-    st.write(lat)
+#for i in range(len(df2)):
+    #lat = df2.loc[i,['lat']]
+    #st.write(lat)
 #    lon = df2.loc[i,['lon']]
 #    d1, d2 = getdata(lat, lon)
 #    name = d2['name']
