@@ -105,8 +105,9 @@ col1, col2 = st.beta_columns(2)
 #    st.table(df[['City', 'Temperature °C']])
 with col2:
     layer = "precipitation_new"
-    url_map = "https://tile.openweathermap.org/map/{layer}/6/10/10.png?appid={api_key}"
-    m.add_layer(url_map)
+    #url_map = "https://tile.openweathermap.org/map/{layer}/6/10/10.png?appid={api_key}"
+    url_map = "https://tile.openweathermap.org/map/{layer}/{z}/{x}/{y}.png?appid={api_key}"
+    m.add_tile_layer(url_map)
     #m.add_basemap(url_map)
     #m.add_layer_control()
     #m.set_center(0, 0, 2)
