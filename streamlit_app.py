@@ -1,5 +1,9 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
+import requests
+
+api_key = st.secrets["pass"]
+
 
 st.set_page_config(layout="wide")
 
@@ -36,12 +40,23 @@ markdown = """
 """
 
 #st.markdown(markdown)
+# Define a list of cities to get temperature data for
+cities = ["New York", "Paris", "Tokyo", "Sydney", "Cape Town", "Rio de Janeiro", "Moscow", "Dubai", "Mumbai", "Cairo", "Bangkok"]
 
 #m = leafmap.Map(minimap_control=True)
 m = leafmap.Map(center=(14.5, 101.5), zoom=5, height="200px", width="50px",
                 draw_control=False,
                 measure_control=False,
                )
+
+# Loop through the cities and get their latitudes and longitudes using OpenWeatherMap API
+for city in cities:
+    # Build the URL for the OpenWeatherMap API call to get the city coordinates
+    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
+
+    # Make the API call and get the response
+    response = requests.get(url)
+    
 
 #m.add_basemap("OpenTopoMap")
 m.to_streamlit(height=700)
