@@ -45,7 +45,7 @@ markdown = """
 
 #m = leafmap.Map(minimap_control=True)
 #m = leafmap.Map(center=(14.5, 101.5))
-m = leafmap.Map(center=(14.5, 101.5), height="200px", width="50px",
+m = leafmap.Map(center=(14.5, 101.5), zoom=6, height="200px", width="50px",
                 draw_control=False,
                 measure_control=False,
                )
@@ -79,22 +79,22 @@ for c in np.arange(len(df3)):
     df3.loc[c, 'pm2_5'] = pm2_5
 #st.write(df3)
     
-for city in cities:    
-    # Make the API call and get the response
-    response = requests.get(url.format(city, api_key))
-    if response:
-        data = response.json()
-        lat = data["coord"]["lat"]
-        lon = data["coord"]["lon"]
-        temp_kelvin = data["main"]["temp"]
-        temp_celsius = temp_kelvin - 273.15
-        
-        #st.write(f"Coordinates of {city}: ({lat}, {lon})")
-        #st.write(f"Temperature in {city}: {temp_celsius:.1f}°C")
-        
-        df = df.append({"City": city, "Latitude": lat, "Longitude": lon, "Temperature °C": temp_celsius}, ignore_index=True)
-    else:
-      st.write(f"Error getting coordinates for {city}")
+#for city in cities:
+#    # Make the API call and get the response
+#    response = requests.get(url.format(city, api_key))
+#    if response:
+#        data = response.json()
+#        lat = data["coord"]["lat"]
+#        lon = data["coord"]["lon"]
+#        temp_kelvin = data["main"]["temp"]
+#        temp_celsius = temp_kelvin - 273.15
+#
+#        #st.write(f"Coordinates of {city}: ({lat}, {lon})")
+#        #st.write(f"Temperature in {city}: {temp_celsius:.1f}°C")
+#
+#        df = df.append({"City": city, "Latitude": lat, "Longitude": lon, "Temperature °C": temp_celsius}, ignore_index=True)
+#    else:
+#      st.write(f"Error getting coordinates for {city}")
 
 #show_temp = st.beta_expander(label='Current Temperatures')
 #with show_temp:
