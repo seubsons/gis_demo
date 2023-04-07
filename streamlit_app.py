@@ -26,6 +26,7 @@ df2 = pd.read_csv('th.csv')
 df2 = df2.dropna()
 
 st.write(df2.head())
+st.write(df2.loc[1, :])
 
 # st.markdown(
 #     """
@@ -76,6 +77,7 @@ for i in range(len(df2)):
     name = d2['name']
     pm2_5 = d1['list'][0]['components']['pm2_5']
     df_air = df_air.append({"City": name, "Pm2_5": pm2_5}, ignore_index=True)
+    st.write(lat, lon)
     
 for city in cities:    
     # Make the API call and get the response
