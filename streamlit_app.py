@@ -70,12 +70,12 @@ def getdata(lat, lon):
         pm2_5 = 0.0
     return pm2_5
 
-
-df3 = df3.assign(pm2_5=[0] * len(df3))
-for c in np.arange(len(df3)):
-    #st.write(c)
-    pm2_5 = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
-    df3.loc[c, 'pm2_5'] = pm2_5
+#### Loop over cities
+# df3 = df3.assign(pm2_5=[0] * len(df3))
+# for c in np.arange(len(df3)):
+#     #st.write(c)
+#     pm2_5 = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
+#     df3.loc[c, 'pm2_5'] = pm2_5
 #st.write(df3)
     
 #for city in cities:
@@ -104,9 +104,14 @@ col1, col2 = st.beta_columns(2)
 #with show_temp:
 #    st.table(df[['City', 'Temperature °C']])
 with col2:
-    show_temp = st.beta_expander(label='PM 2.5')
-    with show_temp:
-        st.table(df3[['city', 'population', 'pm2_5']])
+    layer = "precipitation_new"
+    url_map = "https://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}"
+    m.add_basemap(url_map)
+    m.add_layer_control()
+    m.to_streamlit(height=700)
+#     show_temp = st.beta_expander(label='PM 2.5')
+#     with show_temp:
+#         st.table(df3[['city', 'population', 'pm2_5']])
 
 # Add the heatmap layer to the map
 #m.add_heatmap(
@@ -118,13 +123,13 @@ with col2:
 #            radius=20)
 
 with col1:
-    m.add_heatmap(
-                df3,
-                latitude="lat",
-                longitude="lng",
-                value="pm2_5",
-                name="PM 2.5",
-                radius=25)
+#     m.add_heatmap(
+#                 df3,
+#                 latitude="lat",
+#                 longitude="lng",
+#                 value="pm2_5",
+#                 name="PM 2.5",
+#                 radius=25)
 
     m.to_streamlit(height=700)
 
