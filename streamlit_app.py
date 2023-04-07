@@ -1,6 +1,6 @@
 import streamlit as st
-import leafmap.foliumap as leafmap
-#import leafmap
+#import leafmap.foliumap as leafmap
+import leafmap.leafmap as leafmap
 import requests
 
 api_key = st.secrets["pass"]
