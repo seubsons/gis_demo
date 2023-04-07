@@ -1,7 +1,6 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
 import pandas as pd
-#import leafmap.leafmap as leafmap
 import requests
 
 api_key = st.secrets["pass"]
@@ -21,7 +20,6 @@ logo = "https://i.imgur.com/UbOXYAU.png"
 st.sidebar.image(logo)
 
 # Customize page title
-#st.title("Streamlit for Geospatial Applications")
 st.title("Geospatial Applications")
 
 
@@ -34,11 +32,6 @@ st.title("Geospatial Applications")
 #st.header("Instructions")
 
 markdown = """
-1. For the [GitHub repository](https://github.com/giswqs/streamlit-multipage-template) or [use it as a template](https://github.com/giswqs/streamlit-multipage-template/generate) for your own project.
-2. Customize the sidebar by changing the sidebar text and logo in each Python files.
-3. Find your favorite emoji from https://emojipedia.org.
-4. Add a new app to the `pages/` directory with an emoji in the file name, e.g., `1_🚀_Chart.py`.
-
 """
 
 #st.markdown(markdown)
@@ -71,10 +64,6 @@ for city in cities:
         #st.write(f"Coordinates of {city}: ({lat}, {lon})")
         st.write(f"Temperature in {city}: {temp_celsius:.1f}°C")
         
-        # Create a Leaflet marker for the city and add it to the map with the temperature as a popup
-#         marker = Marker(location=[lat, lon], draggable=False)
-#         marker.bind_popup(f"{city}: {temp_celsius:.1f}°C")
-#         marker.add_to(m)
         df = df.append({"Latitude": lat, "Longitude": lon, "Temperature": temp_celsius}, ignore_index=True)
     else:
       st.write(f"Error getting coordinates for {city}")
@@ -89,9 +78,7 @@ m.add_heatmap(
             name="Heat map",
             radius=20)
 
-#m.add_basemap("OpenTopoMap")
-#m.to_streamlit(height=700)
-st.write(m)
+m.to_streamlit(height=700)
 
 
 
