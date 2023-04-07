@@ -40,8 +40,6 @@ markdown = """
 """
 
 #st.markdown(markdown)
-# Define a list of cities to get temperature data for
-cities = ["New York", "Paris", "Tokyo", "Sydney", "Cape Town", "Rio de Janeiro", "Moscow", "Dubai", "Mumbai", "Cairo", "Bangkok"]
 
 #m = leafmap.Map(minimap_control=True)
 m = leafmap.Map(center=(14.5, 101.5), zoom=5, height="200px", width="50px",
@@ -49,14 +47,26 @@ m = leafmap.Map(center=(14.5, 101.5), zoom=5, height="200px", width="50px",
                 measure_control=False,
                )
 
-# Loop through the cities and get their latitudes and longitudes using OpenWeatherMap API
-for city in cities:
-    # Build the URL for the OpenWeatherMap API call to get the city coordinates
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
+# Define a list of cities to get temperature data for
+cities = ["New York", "Paris", "Tokyo", "Sydney", "Cape Town", "Rio de Janeiro", "Moscow", "Dubai", "Mumbai", "Cairo", "Bangkok"]
 
+url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
+
+# Loop through the cities and get their latitudes and longitudes using OpenWeatherMap API
+for city in cities:    
     # Make the API call and get the response
-    response = requests.get(url)
-    
+    response = requests.get(url.format(city, api_key))
+    if response:
+        data = response.json()
+        lat = data["coord"]["lat"]
+        lon = data["coord"]["lon"]
+        temp_kelvin = data["main"]["temp"]
+        temp_celsius = temp_kelvin - 273.15
+        
+        st.write(f"Coordinates of {city}: ({lat}, {lon})")
+        st.write(f"Temperature in {city}: {temp_celsius:.1f}°C")
+    else:
+      st.write(f"Error getting coordinates for {city}")
 
 #m.add_basemap("OpenTopoMap")
 m.to_streamlit(height=700)
