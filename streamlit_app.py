@@ -27,7 +27,7 @@ df2 = df2.dropna()
 
 st.write(df2.head())
 for i in range(3):
-    st.write(df2.loc[1, ['lat']])
+    st.write(df2.loc[i, ['lat']])
 
 # st.markdown(
 #     """
