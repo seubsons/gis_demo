@@ -68,7 +68,7 @@ for city in cities:
         st.write(f"Temperature in {city}: {temp_celsius:.1f}°C")
         
         # Create a Leaflet marker for the city and add it to the map with the temperature as a popup
-        marker = leafmap.Marker(location=[lat, lon], draggable=False)
+        marker = leafmap.Marker(location=(lat, lon), draggable=False)
         marker.bind_popup(f"{city}: {temp_celsius:.1f}°C")
         marker.add_to(m)
     else:
