@@ -77,7 +77,7 @@ m.add_heatmap(
             df,
             latitude="Latitude",
             longitude="Longitude",
-            value="Temperature",
+            value="Temperature °C",
             name="Heat map",
             radius=20)
 
