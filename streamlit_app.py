@@ -106,7 +106,7 @@ col1, col2 = st.columns(2)
 with col2:
     layer = "precipitation"
     #api_key = "YOUR_API_KEY"
-    url_map = f"https://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}"
+    url_map = "https://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}"
     attribution = "Map data &copy; OpenWeatherMap"
     m.add_tile_layer(url_map, attribution)
     # Display the map in Streamlit
