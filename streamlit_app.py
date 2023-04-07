@@ -99,12 +99,14 @@ for c in np.arange(len(df3)):
 # Customize page title
 st.title("Air Quality Map")
 
+col1, col2 = st.beta_columns(2)
 #show_temp = st.beta_expander(label='Current Temperatures')
 #with show_temp:
 #    st.table(df[['City', 'Temperature °C']])
-show_temp = st.beta_expander(label='PM 2.5')
-with show_temp:
-    st.table(df3[['city', 'population', 'pm2_5']])
+with col1:
+    show_temp = st.beta_expander(label='PM 2.5')
+    with show_temp:
+        st.table(df3[['city', 'population', 'pm2_5']])
 
 # Add the heatmap layer to the map
 #m.add_heatmap(
@@ -115,15 +117,16 @@ with show_temp:
 #            name="Heat map",
 #            radius=20)
 
-m.add_heatmap(
-            df3,
-            latitude="lat",
-            longitude="lng",
-            value="pm2_5",
-            name="PM 2.5",
-            radius=25)
+with col2:
+    m.add_heatmap(
+                df3,
+                latitude="lat",
+                longitude="lng",
+                value="pm2_5",
+                name="PM 2.5",
+                radius=25)
 
-m.to_streamlit(height=700)
+    m.to_streamlit(height=700)
 
 
 
