@@ -50,7 +50,7 @@ m = leafmap.Map(center=(14.5, 101.5), zoom=5, height="200px", width="50px",
 # Define a list of cities to get temperature data for
 cities = ["New York", "Paris", "Tokyo", "Sydney", "Cape Town", "Rio de Janeiro", "Moscow", "Dubai", "Mumbai", "Cairo", "Bangkok"]
 
-url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
+url = f"http://api.openweathermap.org/data/2.5/weather?q={}&appid={}"
 
 # Loop through the cities and get their latitudes and longitudes using OpenWeatherMap API
 for city in cities:    
