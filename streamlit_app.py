@@ -65,7 +65,7 @@ def getdata(lat, lon):
 
 data, data2 = getdata(14.5, 101.5)
 
-st.write(data['list'][0]['main'])
+st.write(data['list'][0])
 st.write(data2['name'])
 
     
