@@ -23,11 +23,9 @@ GitHub Repository: <https://github.com/giswqs/streamlit-multipage-template>
 st.title("World Weather")
 
 df2 = pd.read_csv('th.csv')
-st.write(len(df2))
+#st.write(len(df2))
 df2 = df2.dropna()
-st.write(len(df2))
-lat_th = df2['lat']
-st.write(lat_th)
+st.write(df2)
 #for i in range(3):
 #    st.write(df2.loc[i, ['lat']])
 
@@ -73,15 +71,15 @@ def getdata(lat, lon):
 #st.write(data['list'][0]['components']['pm2_5'])
 #st.write(data2['name'])
 df_air = pd.DataFrame(columns=["City", "Pm2_5"])
-for i in range(len(lat_th)):
-    lat = lat_th[i]
-    st.write(lat)
+#for i in range(len(lat_th)):
+#    lat = lat_th[i]
+#    st.write(lat)
 #    lon = df2.loc[i,['lon']]
 #    d1, d2 = getdata(lat, lon)
 #    name = d2['name']
 #    pm2_5 = d1['list'][0]['components']['pm2_5']
 #    df_air = df_air.append({"City": name, "Pm2_5": pm2_5}, ignore_index=True)
-#st.write(df_air.head())
+st.write(df2.iloc[8, :])
     
 for city in cities:    
     # Make the API call and get the response
