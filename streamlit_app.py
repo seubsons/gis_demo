@@ -110,7 +110,7 @@ with col2:
     attribution = "Map data &copy; OpenWeatherMap"
     m.add_tile_layer(url_map, attribution)
     # Display the map in Streamlit
-    st.pydeck_chart(m.to_streamlit())
+    m.to_streamlit()
 #     show_temp = st.beta_expander(label='PM 2.5')
 #     with show_temp:
 #         st.table(df3[['city', 'population', 'pm2_5']])
