@@ -99,7 +99,7 @@ for city in cities:
 #show_temp = st.beta_expander(label='Current Temperatures')
 #with show_temp:
 #    st.table(df[['City', 'Temperature °C']])
-show_temp = st.beta_expander(label='Current Temperatures')
+show_temp = st.beta_expander(label='PM 2.5')
 with show_temp:
     st.table(df3[['city', 'population', 'pm2_5']])
 
