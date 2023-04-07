@@ -26,7 +26,7 @@ st.title("World Weather")
 df2 = pd.read_csv('th.csv')
 #st.write(len(df2))
 df2 = df2.dropna()
-st.write(df2.dtypes)
+st.write(df2)
 #for i in range(3):
 #    st.write(df2.loc[i, ['lat']])
 
@@ -70,7 +70,7 @@ def getdata(lat, lon):
 
 
 df2 = df2.assign(pm2_5=[0] * len(df2))
-for c in np.arange(len(df2)):
+for c in np.arange(5):
     pm2_5 = getdata(df2.loc[c, 'lat'], df2.loc[c, 'lng'])
     df2.loc[c, 'pm2_5'] = pm2_5
 st.write(df2)
