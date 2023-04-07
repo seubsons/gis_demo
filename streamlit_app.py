@@ -42,7 +42,8 @@ markdown = """
 #st.markdown(markdown)
 
 #m = leafmap.Map(minimap_control=True)
-m = leafmap.Map(center=(14.5, 101.5), zoom=5, height="200px", width="50px",
+#m = leafmap.Map(center=(14.5, 101.5))
+m = leafmap.Map(height="200px", width="50px",
                 draw_control=False,
                 measure_control=False,
                )
@@ -63,13 +64,19 @@ for city in cities:
         temp_kelvin = data["main"]["temp"]
         temp_celsius = temp_kelvin - 273.15
         
-        st.write(f"Coordinates of {city}: ({lat}, {lon})")
+        #st.write(f"Coordinates of {city}: ({lat}, {lon})")
         st.write(f"Temperature in {city}: {temp_celsius:.1f}°C")
+        
+        # Create a Leaflet marker for the city and add it to the map with the temperature as a popup
+        marker = leafmap.Marker(location=[lat, lon], draggable=False)
+        marker.bind_popup(f"{city}: {temp_celsius:.1f}°C")
+        marker.add_to(m)
     else:
       st.write(f"Error getting coordinates for {city}")
 
 #m.add_basemap("OpenTopoMap")
-m.to_streamlit(height=700)
+#m.to_streamlit(height=700)
+st.write(m)
 
 
 
