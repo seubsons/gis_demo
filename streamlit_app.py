@@ -79,7 +79,7 @@ m.add_heatmap(
             longitude="Longitude",
             value="Temperature °C",
             name="Heat map",
-            radius=20)
+            radius=10)
 
 m.to_streamlit(height=700)
 
