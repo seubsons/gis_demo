@@ -26,11 +26,6 @@ m = leafmap.Map(zoom=2,
                 measure_control=False,
                )
 
-# m.add_tile_layer("http://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid={api_key}",
-#     name="Precipitation",
-#     attribution='&copy; <a href="http://owm.io">VANE</a>',
-#     )
-
 m.add_tile_layer(url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
         attribution="Google",
         name="Google Satellite",
