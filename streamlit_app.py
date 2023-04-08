@@ -31,16 +31,17 @@ m = leafmap.Map(center=map_center, zoom=6,
 #         name="Google Satellite",
 #                 )
 
-layer = "clouds_new"
-m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}",
-        attribution="OWM",
-        name="Clouds",
-                )
 
 layer = "precipitation_new"
 m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}",
         attribution="OWM",
         name="Precipitation",
+                )
+layer = "clouds_new"
+m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}",
+        attribution="OWM",
+        name="Clouds",
+        shown=False,
                 )
 
 layer = "pressure_new"
