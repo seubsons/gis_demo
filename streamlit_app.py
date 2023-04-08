@@ -47,21 +47,21 @@ layer = "pressure_new"
 m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}",
         attribution="OWM",
         name="Pressure",
-        overlay=False,
+        shown=False,
                 )
 
 layer = "wind_new"
 m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}",
         attribution="OWM",
         name="Wind",
-        overlay=False,
+        shown=False,
                 )
 
 layer = "temp_new"
 m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}",
         attribution="OWM",
         name="Tempurature",
-        overlay=False,
+        shown=False,
                 )
 
 m.to_streamlit(height=700)
