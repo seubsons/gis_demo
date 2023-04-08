@@ -8,25 +8,6 @@ import numpy as np
 api_key = st.secrets["pass"]
 
 
-# Define layers
-providers = {}
-
-providers["OSM"] = {
-    "title": "OSM",
-    "icon": "img/layers-osm.png",
-    "layer": leafmap.builtin_layers["OpenStreetMap"]
-}
-
-providers["Satellite"] = {
-    "title": "MODIS",
-    "icon": "img/layers-satellite.png",
-    "layer": leafmap.add_tile_layer(
-        url="http://{s}.sat.owm.io/sql/{z}/{x}/{y}?select=b1,b4,b3&from=modis&order=last&color=modis&appid=d22d9a6a3ff2aa523d5917bbccc89211",
-        attribution='<a href="http://owm.io">VANE</a>',
-        max_zoom=19
-    )
-}
-
 ##################################################################
 st.set_page_config(layout="wide")
 
@@ -41,6 +22,12 @@ m = leafmap.Map(zoom=2,
                 draw_control=False,
                 measure_control=False,
                )
+m.add_tile_layer("OSM")
+m.add_tile_layer(
+    "MODIS",
+    url="http://{s}.sat.owm.io/sql/{z}/{x}/{y}?select=b1,b4,b3&from=modis&order=last&color=modis&appid=d22d9a6a3ff2aa523d5917bbccc89211",
+    attribution='&copy; <a href="http://owm.io">VANE</a>',
+)
 
 m.to_streamlit()
 
