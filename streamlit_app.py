@@ -72,7 +72,7 @@ with col1:
 with col2:
     show_temp = st.beta_expander(label='PM2.5')
     df4 = df3.copy()
-    df4['population'] = df4['population'].apply('{:.0f}'.format)
+    df4['population'] = df4['population'].apply('{:,.0f}'.format)
     df4['pm2_5'] = df4['pm2_5'].apply('{:.2f}'.format)
 
     with show_temp:
