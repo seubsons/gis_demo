@@ -2,7 +2,7 @@
 geemap
 geopandas
 jupyter-server-proxy
-leafmap
+leafmap==0.18.10
 nbserverproxy
 owslib
 streamlit
