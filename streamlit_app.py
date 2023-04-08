@@ -25,6 +25,12 @@ st.title("OpenWeather leafmap")
 
 # //////////////////////////////////////
 st.header("PM2.5")
+map_center = (13.25, 101.0)
+m = leafmap.Map(center=map_center, zoom=8,
+                draw_control=False,
+                measure_control=False,
+               )
+
 col1, col2 = st.columns(2)
 with col1:
     m.add_heatmap(
