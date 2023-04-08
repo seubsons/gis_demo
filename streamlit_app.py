@@ -18,7 +18,7 @@ st.set_page_config(layout="wide")
 # Customize page title
 st.title("Map")
 
-st.write(data)
+#st.write(data)
 
 #map_center = (13.25, 101.5)
 m = leafmap.Map(zoom=2,
@@ -31,10 +31,16 @@ m.add_tile_layer(url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
         name="Google Satellite",
                 )
 
+layer = "clouds_new"
+m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}",
+        attribution="OWM",
+        name="Clouds",
+                )
+
 layer = "precipitation_new"
 m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}",
         attribution="OWM",
-        name="Precip",
+        name="Precipitation",
                 )
 
 m.to_streamlit()
