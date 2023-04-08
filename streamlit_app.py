@@ -38,6 +38,13 @@ m = leafmap.Map(zoom=2,
 #     id="temp",
 # )
 # m.add_layer(temp)
+temp_layer = folium.TileLayer(
+    tiles='http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={api_key}',
+    max_zoom=18,
+    attr='&copy; <a href="http://owm.io">VANE</a>',
+    name='Temperature'
+)
+m.add_layer(temp_layer)
 
 m.to_streamlit()
 
