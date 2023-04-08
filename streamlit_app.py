@@ -33,9 +33,12 @@ def getdata(lat, lon):
     return pm2_5, data
 
 df3 = df3.assign(pm2_5=[0] * len(df3))
-c = 0
-pm2_5, data = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
-df3.loc[c, 'pm2_5'] = pm2_5
+# c = 0
+# pm2_5, data = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
+# df3.loc[c, 'pm2_5'] = pm2_5
+for c in np.arange(len(df3)):
+    pm2_5 = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
+    df3.loc[c, 'pm2_5'] = pm2_5
 
 
 timestamp = data['list'][0]['dt']
@@ -47,7 +50,7 @@ Last_Update = f"Last Updated: {Date}, {Time} UTC"
 st.set_page_config(layout="wide")
 
 # Customize page title
-st.title("OpenWeather leafmap")
+st.title("GPT OpenWeather leafmap")
 #st.write(df3)
 
 # //////////////////////////////////////
@@ -70,13 +73,27 @@ with col1:
     m.to_streamlit(height=700)
 
 with col2:
-    show_temp = st.beta_expander(label='PM2.5')
-    df4 = df3.copy()
-    df4['population'] = df4['population'].apply('{:,.0f}'.format)
-    df4['pm2_5'] = df4['pm2_5'].apply('{:.2f}'.format)
+    m = leafmap.Map(center=map_center, zoom=6,
+                draw_control=False,
+                measure_control=False,
+               )
+    m.add_heatmap(
+                df3,
+                latitude="lat",
+                longitude="lng",
+                value="pm2_5",
+                name="Heatmap",
+                radius=25)
+    m.to_streamlit(height=700)
 
-    with show_temp:
-        st.table(df4[['city', 'population', 'pm2_5']])
+# with col2:
+#     show_temp = st.beta_expander(label='PM2.5')
+#     df4 = df3.copy()
+#     df4['population'] = df4['population'].apply('{:,.0f}'.format)
+#     df4['pm2_5'] = df4['pm2_5'].apply('{:.2f}'.format)
+
+#     with show_temp:
+#         st.table(df4[['city', 'population', 'pm2_5']])
 
 # //////////////////////////////////////
 st.header("Weather")
