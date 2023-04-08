@@ -11,6 +11,11 @@ api_key = st.secrets["pass"]
 # url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid={}"
 # response = requests.get(url.format(city, api_key))
 # data = response.json()
+#st.write(data)
+
+
+df2 = pd.read_csv('th.csv')
+df3 = df2[0:50]
 
 ##################################################################
 st.set_page_config(layout="wide")
@@ -18,7 +23,9 @@ st.set_page_config(layout="wide")
 # Customize page title
 st.title("Map")
 
-#st.write(data)
+st.header("PM2.5")
+st.write(df3)
+
 st.header("Weather")
 
 map_center = (13.25, 101.0)
