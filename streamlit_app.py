@@ -44,14 +44,16 @@ m = leafmap.Map(zoom=2,
 #     attr='&copy; <a href="http://owm.io">VANE</a>',
 #     name='Temperature'
 # )
-temp_layer = leafmap.TileLayer(
-    "http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={api_key}",
-    name="Temperature",
-    attribution='&copy; <a href="http://owm.io">VANE</a>',
-    max_zoom=18,
-)
+# temp_layer = leafmap.TileLayer(
+#     "http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={api_key}",
+#     name="Temperature",
+#     attribution='&copy; <a href="http://owm.io">VANE</a>',
+#     max_zoom=18,
+# )
 
-m.add_tile_layer(temp_layer)
+m.add_tile_layer("http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={api_key}",
+    name="Temperature",
+    attribution='&copy; <a href="http://owm.io">VANE</a>')
 
 # m.add_layer(temp_layer)
 # owm_layer = leafmap.OWMLayer(key='b1b15e88fa797225412429c1c50c122a1')
