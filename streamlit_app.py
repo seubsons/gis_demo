@@ -26,8 +26,8 @@ m = leafmap.Map(zoom=2,
                 measure_control=False,
                )
 
-m.add_tile_layer("http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={api_key}",
-    name="Temperature",
+m.add_tile_layer("http://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid={api_key}",
+    name="Precipitation",
     attribution='&copy; <a href="http://owm.io">VANE</a>',
     overlay=True)
 
