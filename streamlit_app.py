@@ -1,6 +1,6 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
-import folium
+#import folium
 
 import pandas as pd
 import requests
@@ -38,15 +38,24 @@ m = leafmap.Map(zoom=2,
 #     id="temp",
 # )
 # m.add_layer(temp)
-temp_layer = folium.TileLayer(
-    tiles='http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={api_key}',
+# temp_layer = folium.TileLayer(
+#     tiles='http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={api_key}',
+#     max_zoom=18,
+#     attr='&copy; <a href="http://owm.io">VANE</a>',
+#     name='Temperature'
+# )
+temp_layer = leafmap.TileLayer(
+    "http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={api_key}",
+    name="Temperature",
+    attribution='&copy; <a href="http://owm.io">VANE</a>',
     max_zoom=18,
-    attr='&copy; <a href="http://owm.io">VANE</a>',
-    name='Temperature'
 )
-m.add_layer(temp_layer)
-owm_layer = leafmap.OWMLayer(key='b1b15e88fa797225412429c1c50c122a1')
-m.add_layer(owm_layer)
+
+m.add_tile_layer(temp_layer)
+
+# m.add_layer(temp_layer)
+# owm_layer = leafmap.OWMLayer(key='b1b15e88fa797225412429c1c50c122a1')
+# m.add_layer(owm_layer)
 
 m.to_streamlit()
 
