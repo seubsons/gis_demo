@@ -19,6 +19,24 @@ df3 = df2[0:50]
 
 map_center = (13.25, 101.0)
 
+url2 = "http://api.openweathermap.org/data/2.5/air_pollution?lat={}&lon={}&appid={}"
+def getdata(lat, lon):
+    response = requests.get(url2.format(lat, lon, api_key))
+    if response:
+        data = response.json()
+        pm2_5 = data['list'][0]['components']['pm2_5']
+    #data2 = response2.json()
+    else:
+        pm2_5 = 0.0
+    return pm2_5, data
+
+df3 = df3.assign(pm2_5=[0] * len(df3))
+c = 0
+pm2_5, data = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
+df3.loc[c, 'pm2_5'] = pm2_5
+
+st.write(data)
+
 ##################################################################
 st.set_page_config(layout="wide")
 
@@ -46,7 +64,7 @@ with col1:
 with col2:
     show_temp = st.beta_expander(label='PM2.5')
     with show_temp:
-        st.table(df3[['city', 'population']])
+        st.table(df3[['city', 'population', 'pm2_5']])
 
 # //////////////////////////////////////
 st.header("Weather")
