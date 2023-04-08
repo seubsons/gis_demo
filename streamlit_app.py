@@ -39,7 +39,7 @@ with col1:
                 latitude="lat",
                 longitude="lng",
                 value="population",
-                name="PM2.5",
+                name="Heatmap",
                 radius=25)
     m.to_streamlit(height=700)
 
