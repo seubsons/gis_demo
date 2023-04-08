@@ -34,7 +34,6 @@ with col1:
                 draw_control=False,
                 measure_control=False,
                )
-
     m.add_heatmap(
                 df3,
                 latitude="lat",
@@ -42,6 +41,8 @@ with col1:
                 value="population",
                 name="PM2.5",
                 radius=25)
+    m.to_streamlit(height=700)
+
 with col2:
     show_temp = st.beta_expander(label='PM2.5')
     with show_temp:
