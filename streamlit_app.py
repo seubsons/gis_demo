@@ -33,7 +33,7 @@ m = leafmap.Map(center=map_center, zoom=6,
 #m.add_basemap("Esri.WorldImagery")
 # Esri.WorldPhysical
 # Esri.WorldShadedRelief
-m.add_base("HYBRID")
+m.add_basemap("HYBRID")
 m.add_basemap("Esri.WorldStreetMap")
 # Esri.WorldTerrain
 #m.add_basemap("Esri.WorldTopoMap")
