@@ -4,6 +4,7 @@ import leafmap.foliumap as leafmap
 import pandas as pd
 import requests
 import numpy as np
+import datetime
 
 api_key = st.secrets["pass"]
 
@@ -25,6 +26,8 @@ def getdata(lat, lon):
     if response:
         data = response.json()
         pm2_5 = data['list'][0]['components']['pm2_5']
+        timestamp = my_dict['list'][0]['dt']
+        
     else:
         pm2_5 = 0.0
         data = 0.0
@@ -35,6 +38,11 @@ c = 0
 pm2_5, data = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
 df3.loc[c, 'pm2_5'] = pm2_5
 
+dt_object = datetime.datetime.fromtimestamp(timestamp)
+
+Date = dt_object.date()
+Time = dt_object.time()
+
 ##################################################################
 st.set_page_config(layout="wide")
 st.write(data)
@@ -44,7 +52,7 @@ st.title("OpenWeather leafmap")
 
 # //////////////////////////////////////
 st.header("PM2.5")
-st.write("Last Updated: ")
+st.write("Last Updated: "+Date+" "+Time)
 col1, col2 = st.columns(2)
 with col1:
     m = leafmap.Map(center=map_center, zoom=6,
