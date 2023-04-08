@@ -25,5 +25,11 @@ with col1:
 with col2:
     m.to_streamlit()
 
+col3, col4 = st.columns(2)
+with col3:
+    m.to_streamlit()
+with col4:
+    m.to_streamlit()
+
 
 
