@@ -25,9 +25,9 @@ def getdata(lat, lon):
     if response:
         data = response.json()
         pm2_5 = data['list'][0]['components']['pm2_5']
-    #data2 = response2.json()
     else:
         pm2_5 = 0.0
+        data = 0.0
     return pm2_5, data
 
 df3 = df3.assign(pm2_5=[0] * len(df3))
