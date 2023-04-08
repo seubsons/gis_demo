@@ -3,6 +3,7 @@ import leafmap.foliumap as leafmap
 import pandas as pd
 import requests
 import numpy as np
+from folium.plugins import ControlPanel
 
 api_key = st.secrets["pass"]
 
