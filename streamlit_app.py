@@ -1,5 +1,4 @@
 import streamlit as st
-import leafmap
 from leafmap import folium
 
 
