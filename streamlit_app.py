@@ -26,16 +26,17 @@ m = leafmap.Map(center=map_center, zoom=6,
                 measure_control=False,
                )
 
-m.add_basemap("Esri.WorldImagery")
+#m.add_basemap("Esri.WorldImagery")
 # Esri.NatGeoWorldMap
 # Esri.OceanBasemap
 # Esri.WorldGrayCanvas
-m.add_basemap("Esri.WorldImagery")
+#m.add_basemap("Esri.WorldImagery")
 # Esri.WorldPhysical
 # Esri.WorldShadedRelief
 m.add_basemap("Esri.WorldStreetMap")
 # Esri.WorldTerrain
-m.add_basemap("Esri.WorldTopoMap")
+#m.add_basemap("Esri.WorldTopoMap")
+m.add_basemap("Strava.All")
 
 # m.add_tile_layer(url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
 #         attribution="Google",
