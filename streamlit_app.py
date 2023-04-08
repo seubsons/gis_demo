@@ -21,7 +21,7 @@ df3 = df2[0:50]
 st.set_page_config(layout="wide")
 
 # Customize page title
-st.title("Map")
+st.title("OpenWeather leafmap")
 
 st.header("PM2.5")
 st.write(df3)
