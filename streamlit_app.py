@@ -50,6 +50,7 @@ st.set_page_config(layout="wide")
 
 # Customize page title
 st.title("OpenWeather leafmap")
+st.write(df3)
 
 # //////////////////////////////////////
 st.header("PM2.5")
