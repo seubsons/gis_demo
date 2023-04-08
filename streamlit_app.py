@@ -35,6 +35,12 @@ m.add_tile_layer(url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
         attribution="Google",
         name="Google Satellite",
                 )
+
+m.add_tile_layer(url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+        attribution="OWM",
+        name="Precip",
+                )
+
 m.to_streamlit()
 
 
