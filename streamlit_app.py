@@ -19,17 +19,6 @@ m = leafmap.Map(center=map_center, zoom=6,
                 measure_control=False,
                )
 
-col1, col2 = st.columns(2)
-with col1:
-    m.to_streamlit()
-with col2:
-    m.to_streamlit()
-
-col3, col4 = st.columns(2)
-with col3:
-    m.to_streamlit()
-with col4:
-    m.to_streamlit()
-
+m.to_streamlit()
 
 
