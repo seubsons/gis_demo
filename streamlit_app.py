@@ -41,7 +41,7 @@ timestamp = data['list'][0]['dt']
 dt_object = datetime.datetime.fromtimestamp(timestamp)
 Date = dt_object.date()
 Time = dt_object.time()
-
+Last_Update = "Last Updated: "+Date+" "+Time
 ##################################################################
 st.set_page_config(layout="wide")
 st.write(data)
@@ -51,7 +51,8 @@ st.title("OpenWeather leafmap")
 
 # //////////////////////////////////////
 st.header("PM2.5")
-st.write("Last Updated: "+Date+" "+Time)
+st.write(Last_Update)
+
 col1, col2 = st.columns(2)
 with col1:
     m = leafmap.Map(center=map_center, zoom=6,
