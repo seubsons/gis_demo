@@ -6,11 +6,11 @@ import requests
 import numpy as np
 
 api_key = st.secrets["pass"]
-city = 'bangkok'
-url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid={}"
 
-response = requests.get(url.format(city, api_key))
-data = response.json()
+# city = 'bangkok'
+# url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid={}"
+# response = requests.get(url.format(city, api_key))
+# data = response.json()
 
 ##################################################################
 st.set_page_config(layout="wide")
@@ -20,16 +20,16 @@ st.title("Map")
 
 #st.write(data)
 
-#map_center = (13.25, 101.5)
-m = leafmap.Map(zoom=2,
+map_center = (13.25, 101.5)
+m = leafmap.Map(center=map_center, zoom=6,
                 draw_control=False,
                 measure_control=False,
                )
 
-m.add_tile_layer(url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
-        attribution="Google",
-        name="Google Satellite",
-                )
+# m.add_tile_layer(url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+#         attribution="Google",
+#         name="Google Satellite",
+#                 )
 
 layer = "clouds_new"
 m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}",
