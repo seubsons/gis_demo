@@ -26,8 +26,8 @@ m = leafmap.Map(center=map_center, zoom=6,
                 measure_control=False,
                )
 
-m.add_basemap("HYBRID", shown=True)
-m.add_basemap("Esri.WorldStreetMap", shown=False)
+m.add_basemap("HYBRID", show=False)
+m.add_basemap("Esri.WorldStreetMap", show=False)
 
 layer = "precipitation_new"
 m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}",
