@@ -13,8 +13,8 @@ st.set_page_config(layout="wide")
 st.title("Map")
 
 
-map_center = (13.25, 101.5)
-m = leafmap.Map(center=map_center, zoom=6,
+#map_center = (13.25, 101.5)
+m = leafmap.Map(zoom=4,
                 draw_control=False,
                 measure_control=False,
                )
