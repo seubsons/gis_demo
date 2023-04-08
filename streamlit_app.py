@@ -14,7 +14,7 @@ st.title("Map")
 
 
 #map_center = (13.25, 101.5)
-m = leafmap.Map(zoom=4,
+m = leafmap.Map(zoom=2,
                 draw_control=False,
                 measure_control=False,
                )
