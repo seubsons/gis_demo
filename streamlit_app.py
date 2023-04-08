@@ -43,6 +43,27 @@ m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{
         name="Precipitation",
                 )
 
+layer = "pressure_new"
+m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}",
+        attribution="OWM",
+        name="Pressure",
+        overlay=False,
+                )
+
+layer = "wind_new"
+m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}",
+        attribution="OWM",
+        name="Wind",
+        overlay=False,
+                )
+
+layer = "temp_new"
+m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}",
+        attribution="OWM",
+        name="Tempurature",
+        overlay=False,
+                )
+
 m.to_streamlit(height=700)
 
 
