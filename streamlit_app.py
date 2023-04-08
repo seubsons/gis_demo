@@ -26,7 +26,6 @@ def getdata(lat, lon):
     if response:
         data = response.json()
         pm2_5 = data['list'][0]['components']['pm2_5']
-        timestamp = data['list'][0]['dt']
         
     else:
         pm2_5 = 0.0
@@ -38,8 +37,8 @@ c = 0
 pm2_5, data = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
 df3.loc[c, 'pm2_5'] = pm2_5
 
+timestamp = data['list'][0]['dt']
 dt_object = datetime.datetime.fromtimestamp(timestamp)
-
 Date = dt_object.date()
 Time = dt_object.time()
 
