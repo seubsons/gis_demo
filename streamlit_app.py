@@ -36,6 +36,9 @@ df3 = df3.assign(pm2_5=[0] * len(df3))
 c = 0
 pm2_5, data = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
 df3.loc[c, 'pm2_5'] = pm2_5
+df3['population'] = df3['population'].apply('{:.0f}'.format)
+df3['pm2_5'] = df3['pm2_5'].apply('{:.2f}'.format)
+
 
 timestamp = data['list'][0]['dt']
 dt_object = datetime.datetime.fromtimestamp(timestamp)
