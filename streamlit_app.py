@@ -35,10 +35,9 @@ c = 0
 pm2_5, data = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
 df3.loc[c, 'pm2_5'] = pm2_5
 
-st.write(data)
-
 ##################################################################
 st.set_page_config(layout="wide")
+st.write(data)
 
 # Customize page title
 st.title("OpenWeather leafmap")
