@@ -6,14 +6,19 @@ import requests
 import numpy as np
 
 api_key = st.secrets["pass"]
+city = 'bangkok'
+url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid={}"
 
+response = requests.get(url.format(city, api_key))
+data = response.json()
 
 ##################################################################
-#st.set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 
 # Customize page title
 st.title("Map")
 
+st.write(data)
 
 #map_center = (13.25, 101.5)
 m = leafmap.Map(zoom=2,
