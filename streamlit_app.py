@@ -41,7 +41,7 @@ timestamp = data['list'][0]['dt']
 dt_object = datetime.datetime.fromtimestamp(timestamp)
 Date = dt_object.date()
 Time = dt_object.time()
-Last_Update = "Last Updated: "+Date+" "+Time
+Last_Update = f"Last Updated: {Date} {Time}"
 ##################################################################
 st.set_page_config(layout="wide")
 st.write(data)
