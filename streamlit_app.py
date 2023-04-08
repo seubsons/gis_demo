@@ -26,7 +26,7 @@ m = leafmap.Map(center=map_center, zoom=6,
                 measure_control=False,
                )
 
-m.add_basemap("HYBRID", shown=False)
+m.add_basemap("HYBRID", shown=True)
 m.add_basemap("Esri.WorldStreetMap", shown=False)
 
 layer = "precipitation_new"
