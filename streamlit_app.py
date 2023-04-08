@@ -30,7 +30,7 @@ st.header("PM2.5")
 
 col1, col2 = st.columns(2)
 with col1:
-    m = leafmap.Map(center=map_center, zoom=8,
+    m = leafmap.Map(center=map_center, zoom=6,
                 draw_control=False,
                 measure_control=False,
                )
