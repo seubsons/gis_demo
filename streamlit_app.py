@@ -23,12 +23,12 @@ m = leafmap.Map(zoom=2,
                 measure_control=False,
                )
 m.add_tile_layer("OSM",name='osm',attribution='att')
-m.add_tile_layer(
-    "MODIS",
-    url="http://{s}.sat.owm.io/sql/{z}/{x}/{y}?select=b1,b4,b3&from=modis&order=last&color=modis&appid=d22d9a6a3ff2aa523d5917bbccc89211",
-    name='modis',
-    attribution='&copy; <a href="http://owm.io">VANE</a>',
-)
+# m.add_tile_layer(
+#     "MODIS",
+#     url="http://{s}.sat.owm.io/sql/{z}/{x}/{y}?select=b1,b4,b3&from=modis&order=last&color=modis&appid=d22d9a6a3ff2aa523d5917bbccc89211",
+#     name='modis',
+#     attribution='&copy; <a href="http://owm.io">VANE</a>',
+# )
 
 m.to_streamlit()
 
