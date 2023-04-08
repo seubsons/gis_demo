@@ -42,7 +42,7 @@ timestamp = data['list'][0]['dt']
 dt_object = datetime.datetime.fromtimestamp(timestamp)
 Date = dt_object.date()
 Time = dt_object.time()
-Last_Update = f"Last Updated: {Date} {Time} UTC"
+Last_Update = f"Last Updated: {Date}, {Time} UTC"
 ##################################################################
 st.set_page_config(layout="wide")
 
