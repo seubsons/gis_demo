@@ -19,6 +19,7 @@ st.set_page_config(layout="wide")
 st.title("Map")
 
 #st.write(data)
+st.header("Weather")
 
 map_center = (13.25, 101.5)
 m = leafmap.Map(center=map_center, zoom=6,
