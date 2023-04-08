@@ -36,7 +36,8 @@ m.add_tile_layer(url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
         name="Google Satellite",
                 )
 
-m.add_tile_layer(url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+layer = "precipitation_new"
+m.add_tile_layer(url="https://tile.openweathermap.org/map/{layer}/{z}/{x}/{y}.png?appid={api_key}",
         attribution="OWM",
         name="Precip",
                 )
