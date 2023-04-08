@@ -29,7 +29,7 @@ m = leafmap.Map(zoom=2,
 m.add_tile_layer("http://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid={api_key}",
     name="Precipitation",
     attribution='&copy; <a href="http://owm.io">VANE</a>',
-    overlay=True)
+    overlay=True, API_key={api_key})
 
 
 m.to_streamlit()
