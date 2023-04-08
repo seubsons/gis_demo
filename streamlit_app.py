@@ -26,7 +26,7 @@ def getdata(lat, lon):
     if response:
         data = response.json()
         pm2_5 = data['list'][0]['components']['pm2_5']
-        timestamp = my_dict['list'][0]['dt']
+        timestamp = data['list'][0]['dt']
         
     else:
         pm2_5 = 0.0
