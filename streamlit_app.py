@@ -36,8 +36,6 @@ df3 = df3.assign(pm2_5=[0] * len(df3))
 c = 0
 pm2_5, data = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
 df3.loc[c, 'pm2_5'] = pm2_5
-df3['population'] = df3['population'].apply('{:.0f}'.format)
-df3['pm2_5'] = df3['pm2_5'].apply('{:.2f}'.format)
 
 
 timestamp = data['list'][0]['dt']
@@ -50,7 +48,7 @@ st.set_page_config(layout="wide")
 
 # Customize page title
 st.title("OpenWeather leafmap")
-st.write(df3)
+#st.write(df3)
 
 # //////////////////////////////////////
 st.header("PM2.5")
@@ -73,8 +71,12 @@ with col1:
 
 with col2:
     show_temp = st.beta_expander(label='PM2.5')
+    df4 = df3.copy()
+    df4['population'] = df4['population'].apply('{:.0f}'.format)
+    df4['pm2_5'] = df4['pm2_5'].apply('{:.2f}'.format)
+
     with show_temp:
-        st.table(df3[['city', 'population', 'pm2_5']])
+        st.table(df4[['city', 'population', 'pm2_5']])
 
 # //////////////////////////////////////
 st.header("Weather")
