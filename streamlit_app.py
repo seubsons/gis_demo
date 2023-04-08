@@ -30,6 +30,13 @@ m.add_tile_layer("OSM",name='osm',attribution='att')
 #     attribution='&copy; <a href="http://owm.io">VANE</a>',
 # )
 
+temp = leafmap.TileLayer(
+    "http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={api_key}",
+    attribution='&copy; <a href="http://owm.io">VANE</a>',
+    id="temp",
+)
+m.add_layer(temp)
+
 m.to_streamlit()
 
 
