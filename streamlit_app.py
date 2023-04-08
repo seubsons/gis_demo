@@ -21,7 +21,7 @@ st.title("Map")
 #st.write(data)
 st.header("Weather")
 
-map_center = (13.25, 101.5)
+map_center = (13.25, 101.0)
 m = leafmap.Map(center=map_center, zoom=8,
                 draw_control=False,
                 measure_control=False,
