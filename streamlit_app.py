@@ -48,6 +48,7 @@ m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{
         attribution="OWM",
         name="Pressure",
         shown=False,
+        opacity=0.5,
                 )
 
 layer = "wind_new"
@@ -55,6 +56,7 @@ m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{
         attribution="OWM",
         name="Wind",
         shown=False,
+        opacity=0.5,
                 )
 
 layer = "temp_new"
@@ -62,6 +64,7 @@ m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{
         attribution="OWM",
         name="Tempurature",
         shown=False,
+        opacity=0.5,
                 )
 
 m.to_streamlit(height=700)
