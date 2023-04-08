@@ -23,9 +23,23 @@ st.set_page_config(layout="wide")
 # Customize page title
 st.title("OpenWeather leafmap")
 
+# //////////////////////////////////////
 st.header("PM2.5")
-st.write(df3)
+col1, col2 = st.columns(2)
+with col1:
+    m.add_heatmap(
+                df3,
+                latitude="lat",
+                longitude="lng",
+                value="population",
+                name="PM2.5",
+                radius=25)
+with col2:
+    show_temp = st.beta_expander(label='PM2.5')
+    with show_temp:
+        st.table(df3[['city', 'population']])
 
+# //////////////////////////////////////
 st.header("Weather")
 
 map_center = (13.25, 101.0)
@@ -48,7 +62,6 @@ m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{
         name="Clouds",
         shown=False,
                 )
-
 layer = "pressure_new"
 m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}",
         attribution="OWM",
@@ -56,7 +69,6 @@ m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{
         shown=False,
         opacity=1.0,
                 )
-
 layer = "wind_new"
 m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}",
         attribution="OWM",
@@ -64,7 +76,6 @@ m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{
         shown=False,
         opacity=1.0,
                 )
-
 layer = "temp_new"
 m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{y}}.png?appid={api_key}",
         attribution="OWM",
