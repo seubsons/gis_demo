@@ -44,7 +44,9 @@ temp_layer = folium.TileLayer(
     attr='&copy; <a href="http://owm.io">VANE</a>',
     name='Temperature'
 )
-m.add_tile_layer(temp_layer)
+m.add_layer(temp_layer)
+owm_layer = leafmap.OWMLayer(key='b1b15e88fa797225412429c1c50c122a1')
+m.add_layer(owm_layer)
 
 m.to_streamlit()
 
