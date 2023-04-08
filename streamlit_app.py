@@ -43,6 +43,6 @@ m.add_tile_layer(url=f"http://tile.openweathermap.org/map/{layer}/{{z}}/{{x}}/{{
         name="Precipitation",
                 )
 
-m.to_streamlit()
+m.to_streamlit(height=700)
 
 
