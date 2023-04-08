@@ -23,7 +23,8 @@ m = leafmap.Map(zoom=2,
 
 m.add_tile_layer("http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={api_key}",
     name="Temperature",
-    attribution='&copy; <a href="http://owm.io">VANE</a>')
+    attribution='&copy; <a href="http://owm.io">VANE</a>',
+    overlay=True)
 
 
 m.to_streamlit()
