@@ -1,5 +1,6 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
+from folium import Icon
 
 import pandas as pd
 import requests
@@ -80,7 +81,7 @@ with col2:
     lat = df3.loc[0, 'lat']
     lon = df3.loc[0, 'lng']
     mag = df3.loc[0, 'population']
-    m.add_marker(location=[lat, lon], tooltip=str(mag), icon=leafmap.Icon(color='red'))
+    m.add_marker(location=[lat, lon], tooltip=str(mag), icon=Icon(color='red'))
     # m.add_heatmap(
     #             df3,
     #             latitude="lat",
