@@ -33,12 +33,12 @@ def getdata(lat, lon):
     return pm2_5, data
 
 df3 = df3.assign(pm2_5=[0] * len(df3))
-# c = 0
-# pm2_5, data = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
-# df3.loc[c, 'pm2_5'] = pm2_5
-for c in np.arange(len(df3)):
-    pm2_5, data = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
-    df3.loc[c, 'pm2_5'] = pm2_5
+c = 0
+pm2_5, data = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
+df3.loc[c, 'pm2_5'] = pm2_5
+# for c in np.arange(len(df3)):
+#     pm2_5, data = getdata(df3.loc[c, 'lat'], df3.loc[c, 'lng'])
+#     df3.loc[c, 'pm2_5'] = pm2_5
 
 
 timestamp = data['list'][0]['dt']
@@ -77,13 +77,17 @@ with col2:
                 draw_control=False,
                 measure_control=False,
                )
-    m.add_heatmap(
-                df3,
-                latitude="lat",
-                longitude="lng",
-                value="pm2_5",
-                name="Heatmap",
-                radius=25)
+    lat = df3.loc[0, 'lat']
+    lon = df3.loc[0, 'lng']
+    mag = df3.loc[0, 'population']
+    m.add_marker(location=[lat, lon], tooltip=str(mag), icon=Icon(color='red'))
+    # m.add_heatmap(
+    #             df3,
+    #             latitude="lat",
+    #             longitude="lng",
+    #             value="pm2_5",
+    #             name="Heatmap",
+    #             radius=25)
     m.to_streamlit(height=700)
 
 # with col2:
