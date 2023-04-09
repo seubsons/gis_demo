@@ -75,7 +75,7 @@ with col1:
         mag = row['pm2_5']
         lat = row['lat']
         lon = row['lng']
-        color = 'purple' if mag > 75 else 'red' if mag > 50 else 'orange' if mag > 25 else 'yellow' if mag > 10 else 'blue'
+        color = 'purple' if mag > 75 else 'red' if mag > 50 else 'orange' if mag > 25 else 'blue' if mag > 10 else 'green'
         m.add_marker(location=[lat, lon], tooltip=str(mag), icon=Icon(color=color))
 
     m.to_streamlit(height=700)
